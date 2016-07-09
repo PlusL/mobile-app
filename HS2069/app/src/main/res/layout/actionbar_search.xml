@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp">
+
+    <ImageView
+        android:id="@+id/actionbar_search_action_left"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_action_back"
+        android:scaleType="centerCrop"
+        android:paddingRight="14dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/actionbar_search_action_left"
+        android:background="#ffffff">
+
+        <EditText
+            android:id="@+id/actionbar_search_edittext"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:hint=" 来点心仪的东西吧"
+            android:textColorHint="#AAAAAA"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/edittext_actionbar_search"
+            android:background="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/actionbar_search_action_discard"
+            android:src="@drawable/ic_action_remove"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

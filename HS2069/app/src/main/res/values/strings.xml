@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HS2069</string>
+    <string name="title_activity_search">搜索</string>
+    <string name="filename_search_record">SearchRecord.txt</string>
+</resources>
