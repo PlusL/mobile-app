@@ -97,6 +97,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        //设置清楚搜索记录
         actionBar.getCustomView().findViewById(R.id.actionbar_search_action_discard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

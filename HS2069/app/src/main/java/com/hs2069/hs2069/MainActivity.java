@@ -1,18 +1,13 @@
 package com.hs2069.hs2069;
 
-import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.hs2069.hs2069.R;
 import com.hs2069.hs2069.fragments.MainTabFragment1;
 import com.hs2069.hs2069.fragments.MainTabFragment2;
 
@@ -65,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_search:
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
+                return true;
+            case R.id.action_person:
+                Intent intent2 = new Intent(MainActivity.this, PersonActivity.class);
+                startActivity(intent2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
