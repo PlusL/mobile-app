@@ -23,6 +23,14 @@
             android:label="@string/title_activity_person"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".ItemActivity"
+            android:label="@string/title_activity_item"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".ModifyActivity"
+            android:label="@string/title_activity_modify"
+            android:parentActivityName=".PersonActivity">
+        </activity>
     </application>
 
 </manifest>

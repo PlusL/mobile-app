@@ -1,12 +1,18 @@
 package com.hs2069.hs2069.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.hs2069.hs2069.Adapter.PersonInfoAdapter1;
+import com.hs2069.hs2069.Adapter.PersonInfoAdapter2;
+import com.hs2069.hs2069.ItemActivity;
+import com.hs2069.hs2069.PersonActivity;
 import com.hs2069.hs2069.R;
 
 import java.util.ArrayList;
@@ -26,7 +32,16 @@ public class PersonInfo2Fragment extends android.support.v4.app.Fragment {
             dataList.add(strs[i]);
         }
         lv = (ListView)view.findViewById(R.id.fragment_person_info2_lv);
-        lv.setAdapter(new PersonInfoAdapter1(dataList));
+        PersonInfoAdapter2 adapter = new PersonInfoAdapter2(dataList);
+        lv.setAdapter(adapter);
+        //TODO:暂时设置成打开商品信息
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ItemActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

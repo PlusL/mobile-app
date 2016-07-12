@@ -1,12 +1,16 @@
 package com.hs2069.hs2069.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hs2069.hs2069.PersonActivity;
 import com.hs2069.hs2069.R;
+import com.hs2069.hs2069.fragments.PersonInfo2Fragment;
 
 import java.util.ArrayList;
 
@@ -46,7 +50,6 @@ public class PersonInfoAdapter2 extends BaseAdapter{
         }
         ViewHolder holder = (ViewHolder)convertView.getTag();
         holder.tv.setText(mData.get(position));
-
         return convertView;
     }
 

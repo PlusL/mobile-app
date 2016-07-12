@@ -2,5 +2,7 @@
     <string name="app_name">HS2069</string>
     <string name="title_activity_search">搜索</string>
     <string name="title_activity_person">个人信息</string>
+    <string name="title_activity_item">商品信息</string>
     <string name="filename_search_record">SearchRecord.txt</string>
+    <string name="title_activity_modify">修改信息</string>
 </resources>

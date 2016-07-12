@@ -48,5 +48,12 @@ public class PersonActivity extends AppCompatActivity {
                 Toast.makeText(PersonActivity.this, "退出登录已被按下", Toast.LENGTH_SHORT).show();
             }
         });
+        findViewById(R.id.activity_person_head).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PersonActivity.this, ModifyActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
