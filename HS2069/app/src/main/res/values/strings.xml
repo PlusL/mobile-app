@@ -5,4 +5,8 @@
     <string name="title_activity_item">商品信息</string>
     <string name="filename_search_record">SearchRecord.txt</string>
     <string name="title_activity_modify">修改信息</string>
+    <string name="title_activity_login">登录</string>
+    <string name="title_activity_register">注册</string>
+    <string name="app_id">FtWtUhMPKlwv1Okvr3CV676D-gzGzoHsz</string>
+    <string name="app_key">Y04B6JWcCPWtBhxlPEcs3Ark</string>
 </resources>

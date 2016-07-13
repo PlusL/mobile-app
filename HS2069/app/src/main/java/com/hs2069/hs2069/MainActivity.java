@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVUser;
 import com.hs2069.hs2069.fragments.MainTabFragment1;
 import com.hs2069.hs2069.fragments.MainTabFragment2;
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar.Tab tab2 = actionBar.newTab().setText("tab2");
         tab2.setTabListener(new MyTabsListener(fragment2, this));
         actionBar.addTab(tab2);
+        AVOSCloud.initialize(this, getString(R.string.app_id), getString(R.string.app_key));
     }
 
     @Override
@@ -62,8 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.action_person:
-                Intent intent2 = new Intent(MainActivity.this, PersonActivity.class);
-                startActivity(intent2);
+                if(AVUser.getCurrentUser() == null){
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }else{
+                    startActivity(new Intent(MainActivity.this, PersonActivity.class));
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

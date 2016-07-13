@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.hs2069.hs2069.fragments.MainTabFragment1;
 import com.hs2069.hs2069.fragments.MainTabFragment2;
 import com.hs2069.hs2069.fragments.SearchRecordFragment;
@@ -114,5 +115,4 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-
 }

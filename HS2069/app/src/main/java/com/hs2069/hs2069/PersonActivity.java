@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.hs2069.hs2069.R;
 import com.hs2069.hs2069.fragments.PersonInfo1Fragment;
 import com.hs2069.hs2069.fragments.PersonInfo2Fragment;
@@ -45,7 +46,9 @@ public class PersonActivity extends AppCompatActivity {
         findViewById(R.id.activity_person_iv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(PersonActivity.this, "退出登录已被按下", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(PersonActivity.this, "退出登录已被按下", Toast.LENGTH_SHORT).show();
+                AVUser.logOut();
+                finish();
             }
         });
         findViewById(R.id.activity_person_head).setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,12 @@ public class PersonActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PersonActivity.this, ModifyActivity.class);
                 startActivity(intent);
+            }
+        });
+        findViewById(R.id.activity_person_qrcode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PersonActivity.this, LoginActivity.class));
             }
         });
     }

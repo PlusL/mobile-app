@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/activity_login_head"
+        android:src="@drawable/ic_action_head"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_login_ll_top"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/activity_login_head"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="请输入账号"
+            android:id="@+id/activity_login_et_account"
+            android:inputType="phone"
+            android:drawableLeft="@drawable/ic_action_account"
+            android:drawablePadding="@dimen/activity_horizontal_margin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/activity_login_et_password"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/ic_action_password"
+            android:drawablePadding="@dimen/activity_horizontal_margin"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/activity_login_btn_login"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:background="@color/btn_backgroud"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/activity_login_btn_register"
+            android:text="注册"
+            android:textColor="#ffffff"
+            android:background="@color/btn_backgroud"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_login_ll_top"
+        android:orientation="vertical"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您还可以选择这些方式登录"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/wechat"/>
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/weibo"/>
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/qq"/>
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/zhihu"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
