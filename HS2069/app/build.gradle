@@ -21,6 +21,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'cz.msebera.android:httpclient:4.3.6'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile files('libs/avoscloud-push-v3.14.1.jar')
@@ -31,4 +32,8 @@ dependencies {
     compile files('libs/protobuf-java-2.6.1.jar')
     compile files('libs/fastjson.jar')
     compile files('libs/httpmime-4.2.4.jar')
+    compile files('libs/httpasyncclient-4.0-beta3.jar')
+    compile files('libs/android-async-http-1.4.9.jar')
+    compile files('libs/httpcore5-5.0-alpha1.jar')
+    compile files('libs/httpclient-4.2.5.jar')
 }

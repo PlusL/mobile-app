@@ -45,6 +45,7 @@
             android:textColor="#ffffff"
             android:gravity="center"
             android:text="我要了"
+            android:id="@+id/activity_item_buy"
             android:textSize="16sp"/>
 
 
@@ -93,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:id="@+id/activity_item_price"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:text="CNY 250"/>
@@ -103,6 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="帝都名犬，转让爱心人士"
+                android:id="@+id/activity_item_title"
                 android:textSize="20sp"/>
 
             <LinearLayout
@@ -151,16 +154,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="我很爱我的狗，但是我养不起了，求转手，这家伙太能吃了！！！"
+                android:id="@+id/activit_item_content"
+                android:paddingTop="@dimen/activity_vertical_margin"
                 android:textSize="15sp"/>
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:id="@+id/activity_item_iv1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:src="@drawable/dog1"/>
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/activity_item_iv2"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/dog2"/>
 
         </LinearLayout>

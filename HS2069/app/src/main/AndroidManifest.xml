@@ -51,6 +51,14 @@
             android:label="你们看不到我"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".PaymentActivity"
+            android:label="确认购买"
+            android:parentActivityName=".ItemActivity">
+        </activity>
+        <activity android:name=".AddressActivity"
+        android:label="修改收货地址"
+        android:parentActivityName=".ModifyActivity">
+    </activity>
     </application>
 
 </manifest>

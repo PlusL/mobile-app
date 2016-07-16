@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -71,10 +72,21 @@ public class SearchRecordFragment extends android.support.v4.app.Fragment {
             dataList2.add(dataList.get(size-i));
         }
         lv = (ListView)view.findViewById(R.id.fragment_search_record_lv);
-        //lv.1setAdapter(new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_list_item_1, strs));
-        //lv.setAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_checked, strs));
-        //lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         lv.setAdapter(new SearchRecordAdapter(dataList2));
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //final android.support.v4.app.Fragment fragment_search_result = new SearchResultFragment();
+                //android.support.v4.app.FragmentTransaction fmt = getActivity().getSupportFragmentManager().beginTransaction();
+                //fmt.add(R.id.search_container, fragment_search_result).commit();
+                android.support.v4.app.Fragment fragment = new SearchResultFragment();
+                Bundle data = new Bundle();
+                data.putString("content", dataList2.get(position));
+                fragment.setArguments(data);
+                android.support.v4.app.FragmentManager manager = getActivity().getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.search_container, fragment).commit();
+            }
+        });
         ImageView iv = (ImageView)view.findViewById(R.id.fragment_search_record_iv);
         //删除搜索记录
         iv.setOnClickListener(new View.OnClickListener() {

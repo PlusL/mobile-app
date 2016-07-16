@@ -79,6 +79,9 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 //加载搜索结果fragment，设置输入法为隐藏
                 android.support.v4.app.Fragment fragment_search_result = new SearchResultFragment();
+                Bundle data = new Bundle();
+                data.putString("content", filecontent);
+                fragment_search_result.setArguments(data);
                 android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.search_container, fragment_search_result).commit();
                 EditText mEditText = (EditText) findViewById(R.id.actionbar_search_edittext);

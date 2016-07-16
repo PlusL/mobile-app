@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AVOSCloud.initialize(this, getString(R.string.app_id), getString(R.string.app_key));
         /*
         if(findViewById(R.id.main_tab_fragment1) != null){
             if(savedInstanceState != null) {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         */
-        /*
+
         //下载图像
         AVQuery<AVObject> query = new AVQuery<>("item");
         query.findInBackground(new FindCallback<AVObject>() {
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null) {
                     List<AVObject> mList = list;
                     for (int i = 0; i < mList.size(); i++) {
-                        AVFile file = new AVFile("dog" + i + ".jpg", mList.get(i).getString("src"), new HashMap<String, Object>());
+                        final String id = mList.get(i).getObjectId();
+                        AVFile file = new AVFile("dog" + id + ".jpg", mList.get(i).getString("src"), new HashMap<String, Object>());
                         final int ii = i;
                         //save image
                         file.getDataInBackground(new GetDataCallback() {
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (e == null) {
                                     Log.w("download image:" + ii, "success");
                                     try {
-                                        FileOutputStream fout = openFileOutput("dog" + ii + ".jpg", Context.MODE_PRIVATE);
+                                        FileOutputStream fout = openFileOutput("dog" + id + ".jpg", Context.MODE_PRIVATE);
                                         fout.write(bytes);
                                         fout.close();
                                     } catch (Exception e1) {
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        /*
         android.support.v4.app.Fragment fragment_main = new MainTabFragment1();
         fragment_main = (MainTabFragment1) Fragment.instantiate(this, MainTabFragment1.class.getName());
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
@@ -115,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar.Tab tab2 = actionBar.newTab().setText("tab2");
         tab2.setTabListener(new MyTabsListener(fragment2, this));
         actionBar.addTab(tab2);
-        AVOSCloud.initialize(this, getString(R.string.app_id), getString(R.string.app_key));
         /*
         final ArrayList<MainItem> dataList = new ArrayList<MainItem>();
         AVQuery<AVObject> query1 = new AVQuery<>("item");

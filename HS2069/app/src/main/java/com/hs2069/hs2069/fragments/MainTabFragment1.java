@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,6 +25,7 @@ import com.hs2069.hs2069.Adapter.MainAdapter;
 import com.hs2069.hs2069.Adapter.PersonInfoAdapter1;
 import com.hs2069.hs2069.BlankActivity;
 import com.hs2069.hs2069.Data.MainItem;
+import com.hs2069.hs2069.ItemActivity;
 import com.hs2069.hs2069.R;
 
 import java.io.FileInputStream;
@@ -44,6 +46,7 @@ public class MainTabFragment1 extends android.support.v4.app.Fragment {
         lv = (ListView)view.findViewById(R.id.fragment_main_tab1_lv);
         AVQuery<AVObject> query = new AVQuery<>("item");
         final ArrayList<MainItem> dataList = new ArrayList<MainItem>();
+        final ArrayList<String> idList = new ArrayList<String>();
         dataList.clear();
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
@@ -52,6 +55,7 @@ public class MainTabFragment1 extends android.support.v4.app.Fragment {
                     List<AVObject> mList = list;
                     for (int i = 0; i < mList.size(); i++) {
                         final int ii = i;
+                        /*
                         AVFile file = new AVFile("dog" + i + ".jpg", mList.get(i).getString("src"), new HashMap<String, Object>());
                         //save image
                         file.getDataInBackground(new GetDataCallback() {
@@ -71,13 +75,14 @@ public class MainTabFragment1 extends android.support.v4.app.Fragment {
                                 }
                             }
                         });
-
+                        */
                         Bitmap bitmap;
                         try {
-                            FileInputStream fis = getActivity().openFileInput("dog" + ii + ".jpg");
+                            FileInputStream fis = getActivity().openFileInput("dog" + mList.get(i).getObjectId() + ".jpg");
                             bitmap = BitmapFactory.decodeStream(fis);
                             MainItem mMainItem = new MainItem(mList.get(i).getString("title"), mList.get(i).getString("content"), mList.get(i).getString("price"), bitmap);
                             dataList.add(mMainItem);
+                            idList.add(mList.get(i).getObjectId());
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -86,6 +91,14 @@ public class MainTabFragment1 extends android.support.v4.app.Fragment {
                 } else {
                     e.printStackTrace();
                 }
+            }
+        });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ItemActivity.class);
+                intent.putExtra("id", idList.get(position));
+                startActivity(intent);
             }
         });
         return view;

@@ -38,8 +38,8 @@ public class PersonInfo2Fragment extends android.support.v4.app.Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), ItemActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), ItemActivity.class);
+                //startActivity(intent);
             }
         });
         return view;

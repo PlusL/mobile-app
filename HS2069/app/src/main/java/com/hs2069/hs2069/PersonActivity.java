@@ -58,11 +58,5 @@ public class PersonActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        findViewById(R.id.activity_person_qrcode).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PersonActivity.this, LoginActivity.class));
-            }
-        });
     }
 }
