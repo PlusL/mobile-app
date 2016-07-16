@@ -47,6 +47,10 @@
             android:label="@string/title_activity_register"
             android:parentActivityName=".LoginActivity">
         </activity>
+        <activity android:name=".BlankActivity"
+            android:label="你们看不到我"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
