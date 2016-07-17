@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.hs2069.hs2069.Adapter.ModifyAdapter;
 import com.hs2069.hs2069.Adapter.PersonInfoAdapter1;
 import com.hs2069.hs2069.AddressActivity;
+import com.hs2069.hs2069.CardActivity;
 import com.hs2069.hs2069.Data.ModifyItem1;
 import com.hs2069.hs2069.R;
 
@@ -46,8 +47,14 @@ public class ModifyFragment extends android.support.v4.app.Fragment  {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 4) {
-                    startActivity(new Intent(getActivity(), AddressActivity.class));
+                switch (position) {
+                    case 4: {
+                        startActivity(new Intent(getActivity(), AddressActivity.class));
+                        break;
+                    }
+                    case 3: {
+                        startActivity(new Intent(getActivity(), CardActivity.class));
+                    }
                 }
             }
         });

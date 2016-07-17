@@ -20,6 +20,23 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.actionbar_login);
+        actionBar.getCustomView().findViewById(R.id.actionbar_login_action_left).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        actionBar.getCustomView().findViewById(R.id.actionbar_login_action_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.activity_login_btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

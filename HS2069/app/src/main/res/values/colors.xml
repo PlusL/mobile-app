@@ -8,4 +8,5 @@
     <color name="edittext_actionbar_search">#000000</color>
     <color name="colorBorder">#c0c0c0</color>
     <color name="btn_backgroud">#43CD80</color>
+    <color name="hint_color">#AAAAAA</color>
 </resources>

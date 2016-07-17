@@ -56,9 +56,13 @@
             android:parentActivityName=".ItemActivity">
         </activity>
         <activity android:name=".AddressActivity"
-        android:label="修改收货地址"
-        android:parentActivityName=".ModifyActivity">
-    </activity>
+            android:label="修改收货地址"
+            android:parentActivityName=".ModifyActivity">
+        </activity>
+        <activity android:name=".CardActivity"
+            android:label="绑定支付信息"
+            android:parentActivityName=".ModifyActivity">
+        </activity>
     </application>
 
 </manifest>

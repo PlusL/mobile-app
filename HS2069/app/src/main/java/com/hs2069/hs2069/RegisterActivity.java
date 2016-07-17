@@ -28,6 +28,23 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.actionbar_register);
+        actionBar.getCustomView().findViewById(R.id.actionbar_register_action_left).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        actionBar.getCustomView().findViewById(R.id.actionbar_register_action_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         Button btnCode = (Button)findViewById(R.id.activity_register_btn_code);
         btnCode.setOnClickListener(new View.OnClickListener() {
             @Override

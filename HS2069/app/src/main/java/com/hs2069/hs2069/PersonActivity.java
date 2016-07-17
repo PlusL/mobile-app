@@ -1,5 +1,6 @@
 package com.hs2069.hs2069;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import com.hs2069.hs2069.R;
 import com.hs2069.hs2069.fragments.PersonInfo1Fragment;
 import com.hs2069.hs2069.fragments.PersonInfo2Fragment;
 import com.hs2069.hs2069.fragments.SearchRecordFragment;
+
+import java.io.OutputStream;
 
 /**
  * Created by edward2414 on 7/9/2016.
@@ -48,6 +51,20 @@ public class PersonActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(PersonActivity.this, "退出登录已被按下", Toast.LENGTH_SHORT).show();
                 AVUser.logOut();
+                //清除绑定的卡号的信息
+                OutputStream outputStream = null;
+                try {
+                    outputStream = CardActivity.mCardActivity.openFileOutput("Card.txt", Context.MODE_PRIVATE);
+                    outputStream.write("".getBytes());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        outputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 finish();
             }
         });

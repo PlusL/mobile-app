@@ -37,6 +37,23 @@ public class ItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.actionbar_item);
+        actionBar.getCustomView().findViewById(R.id.actionbar_item_action_left).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        actionBar.getCustomView().findViewById(R.id.actionbar_item_action_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ItemActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         Intent intent = getIntent();
         final String id = intent.getStringExtra("id");
         AVQuery<AVObject> query = new AVQuery<>("item");

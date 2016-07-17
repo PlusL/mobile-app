@@ -99,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        /*
+
         android.support.v4.app.Fragment fragment_main = new MainTabFragment1();
-        fragment_main = (MainTabFragment1) Fragment.instantiate(this, MainTabFragment1.class.getName());
+        //fragment_main = (MainTabFragment1) Fragment.instantiate(this, MainTabFragment1.class.getName());
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, fragment_main).commit();
-        */
 
+        /*
         //设置不同的tab
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar.Tab tab2 = actionBar.newTab().setText("tab2");
         tab2.setTabListener(new MyTabsListener(fragment2, this));
         actionBar.addTab(tab2);
+        */
         /*
         final ArrayList<MainItem> dataList = new ArrayList<MainItem>();
         AVQuery<AVObject> query1 = new AVQuery<>("item");
