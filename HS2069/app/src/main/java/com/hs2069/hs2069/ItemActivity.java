@@ -17,15 +17,19 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.GetDataCallback;
+import com.avos.avoscloud.SaveCallback;
 import com.hs2069.hs2069.Data.MainItem;
 
 import org.w3c.dom.Text;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,6 +37,7 @@ import java.util.List;
  * Created by edward2414 on 7/10/2016.
  */
 public class ItemActivity extends AppCompatActivity {
+    int isLike = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,71 @@ public class ItemActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         final String id = intent.getStringExtra("id");
+
+        //添加我喜欢功能
+        final ImageView iv = (ImageView)findViewById(R.id.activity_item_favorite);
+        final AVQuery<AVObject> mQueryUser = new AVQuery<AVObject>("favorite");
+        mQueryUser.whereEqualTo("buyer", AVUser.getCurrentUser().getObjectId());
+        final AVQuery<AVObject> mQueryItem = new AVQuery<AVObject>("favorite");
+        mQueryItem.whereEqualTo("item", id);
+        AVQuery<AVObject> mQuery = AVQuery.and(Arrays.asList(mQueryUser, mQueryItem));
+        mQuery.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if(list.size() == 0){
+                    isLike = 0;
+                    iv.setImageResource(R.drawable.ic_action_favorite0);
+                }else{
+                    isLike = 1;
+                    iv.setImageResource(R.drawable.ic_action_favorite);
+                }
+            }
+        });
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLike == 0) {
+                    AVObject mAVObject = new AVObject("favorite");
+                    mAVObject.put("buyer", AVUser.getCurrentUser().getObjectId());
+                    mAVObject.put("item", id);
+                    mAVObject.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(AVException e) {
+                            if (e == null) {
+                                Log.w("save favorite", "success");
+                                iv.setImageResource(R.drawable.ic_action_favorite);
+                                isLike = 1;
+                                Toast.makeText(ItemActivity.this, "喜欢成功", Toast.LENGTH_SHORT).show();
+                            } else {
+                                e.printStackTrace();
+                                Log.w("save favorite", "fail");
+                            }
+                        }
+                    });
+                } else {
+                    final AVQuery<AVObject> queryUser = new AVQuery<AVObject>("favorite");
+                    queryUser.whereEqualTo("buyer", AVUser.getCurrentUser().getObjectId());
+                    final AVQuery<AVObject> queryItem = new AVQuery<AVObject>("favorite");
+                    queryItem.whereEqualTo("item", id);
+                    AVQuery<AVObject> query = AVQuery.and(Arrays.asList(queryUser, queryItem));
+                    query.findInBackground(new FindCallback<AVObject>() {
+                        @Override
+                        public void done(List<AVObject> list, AVException e) {
+                            if (e == null) {
+                                list.get(0).deleteInBackground();
+                                iv.setImageResource(R.drawable.ic_action_favorite0);
+                                isLike = 0;
+                                Toast.makeText(ItemActivity.this, "取消喜欢成功", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.w("query favorite", "fail");
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
         AVQuery<AVObject> query = new AVQuery<>("item");
         query.whereEqualTo("objectId", id);
         query.getFirstInBackground(new GetCallback<AVObject>() {

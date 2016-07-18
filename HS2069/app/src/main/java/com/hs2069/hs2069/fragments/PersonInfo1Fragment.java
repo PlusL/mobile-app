@@ -1,16 +1,20 @@
 package com.hs2069.hs2069.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.hs2069.hs2069.Adapter.PersonInfoAdapter1;
 import com.hs2069.hs2069.Adapter.SearchResultAdapter;
+import com.hs2069.hs2069.FavoriteActivity;
 import com.hs2069.hs2069.PersonActivity;
 import com.hs2069.hs2069.R;
+import com.hs2069.hs2069.RecordActivity;
 
 import java.util.ArrayList;
 
@@ -29,6 +33,16 @@ public class PersonInfo1Fragment extends android.support.v4.app.Fragment {
             dataList.add(strs[i]);
         }
         lv = (ListView)view.findViewById(R.id.fragment_person_info1_lv);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 2){
+                    startActivity(new Intent(getActivity(), RecordActivity.class));
+                }else if(position == 3){
+                    startActivity(new Intent(getActivity(), FavoriteActivity.class));
+                }
+            }
+        });
         lv.setAdapter(new PersonInfoAdapter1(dataList));
         return view;
     }

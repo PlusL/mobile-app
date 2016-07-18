@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.hs2069.hs2069.R;
 import com.hs2069.hs2069.fragments.PersonInfo1Fragment;
@@ -40,6 +43,8 @@ public class PersonActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView tv = (TextView)findViewById(R.id.activity_person_nickname);
+        tv.setText(AVUser.getCurrentUser().getString("nickname"));
         android.support.v4.app.Fragment fragment_person_info1 = new PersonInfo1Fragment();
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.person_container, fragment_person_info1).commit();

@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void done(AVException e) {
                             if (e == null) {
+                                Toast.makeText(RegisterActivity.this, "验证码已发送", Toast.LENGTH_SHORT).show();
                                 Log.d("sms", "success");
                             } else {
                                 // 失败的原因可能有多种，常见的是用户名已经存在。
@@ -77,6 +78,18 @@ public class RegisterActivity extends AppCompatActivity {
                 final String phone = String.valueOf(etPhone.getText());
                 EditText etPassword = (EditText)findViewById(R.id.activity_register_et_password1);
                 final String password = String.valueOf(etPassword.getText());
+                EditText etPassword2 = (EditText)findViewById(R.id.activity_register_et_password2);
+                final String password2 = String.valueOf(etPassword2.getText());
+                EditText etNickname = (EditText)findViewById(R.id.activity_register_et_nickname);
+                final String nickname = String.valueOf(etNickname.getText());
+                if(password.equals(password2) == false){
+                    Toast.makeText(RegisterActivity.this, "密码不一致", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(nickname.isEmpty()){
+                    Toast.makeText(RegisterActivity.this, "昵称不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 AVQuery<AVUser> query = AVQuery.getQuery(AVUser.class);
                 query.whereEqualTo("username", phone);
                 query.findInBackground(new FindCallback<AVUser>() {
@@ -99,6 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         AVUser avUser = new AVUser();
                                         avUser.setUsername(phone);
                                         avUser.setPassword(password);
+                                        avUser.put("nickname", nickname);
                                         avUser.signUpInBackground(new SignUpCallback() {
                                             @Override
                                             public void done(AVException e) {

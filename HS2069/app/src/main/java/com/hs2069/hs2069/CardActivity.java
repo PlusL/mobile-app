@@ -93,7 +93,7 @@ public class CardActivity extends AppCompatActivity {
                         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                         StrictMode.setThreadPolicy(policy);
                         try {
-                            String url = "http://10.214.11.99:8088/bank.php";
+                            String url = "http://10.214.11.157:8088/bank.php";
                             AsyncHttpClient client = new AsyncHttpClient();
                             RequestParams params = new RequestParams();
                             params.put("apiname", "bindAccount");

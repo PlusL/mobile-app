@@ -48,6 +48,7 @@ public class MainTabFragment1 extends android.support.v4.app.Fragment {
         final ArrayList<MainItem> dataList = new ArrayList<MainItem>();
         final ArrayList<String> idList = new ArrayList<String>();
         dataList.clear();
+        idList.clear();
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {

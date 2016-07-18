@@ -31,6 +31,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.AsyncHttpResponseHandler;
 import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.GetDataCallback;
+import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.okhttp.internal.framed.Header;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -61,6 +62,7 @@ import java.util.logging.Handler;
 public class PaymentActivity extends AppCompatActivity {
     public static PaymentActivity mPaymentActivity;
     String money = new String();
+    String id = new String();
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -109,7 +111,7 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
         Intent intent = getIntent();
-        final String id = intent.getStringExtra("id");
+        id = intent.getStringExtra("id");
         AVQuery<AVObject> query = new AVQuery<>("item");
         query.whereEqualTo("objectId", id);
         query.getFirstInBackground(new GetCallback<AVObject>() {
@@ -162,7 +164,7 @@ public class PaymentActivity extends AppCompatActivity {
                             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                             StrictMode.setThreadPolicy(policy);
                             try {
-                                String url = "http://10.214.11.99:8088/bank.php";
+                                String url = "http://10.214.11.157:8088/bank.php";
                                 AsyncHttpClient client = new AsyncHttpClient();
                                 RequestParams params = new RequestParams();
                                 params.put("apiname", "confirmPasswd");
@@ -171,7 +173,9 @@ public class PaymentActivity extends AppCompatActivity {
                                 params.put("sellerID", "000000000000000000000001");
                                 params.put("accountPasswd", password);
                                 params.put("sumMoney", money);
-                                client.post(url, params, new MyJson());
+                                MyJson mMyJson = new MyJson();
+                                mMyJson.itemId = id;
+                                client.post(url, params, mMyJson);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -195,6 +199,8 @@ public class PaymentActivity extends AppCompatActivity {
 
 class MyJson extends JsonHttpResponseHandler {
 
+    public String itemId;
+
     @Override
     public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
         super.onSuccess(statusCode, headers, response);
@@ -209,6 +215,21 @@ class MyJson extends JsonHttpResponseHandler {
                     Toast.makeText(PaymentActivity.mPaymentActivity, "交易成功", Toast.LENGTH_SHORT).show();
                     Log.w("sumMoney", response.getString("sumMoney"));
                     Log.w("sellerMailbox", response.getString("sellerMailbox"));
+                    //添加购买记录
+                    AVObject mAVObject = new AVObject("record");
+                    mAVObject.put("buyer", AVUser.getCurrentUser().getObjectId());
+                    mAVObject.put("item", itemId);
+                    mAVObject.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(AVException e) {
+                            if (e == null) {
+                                Log.w("save buy record", "success");
+                            } else {
+                                e.printStackTrace();
+                                Log.w("save buy record", "fail");
+                            }
+                        }
+                    });
                     break;
                 }
                 case "-5":{

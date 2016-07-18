@@ -22,6 +22,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="25dp"
+                android:id="@+id/activity_item_favorite"
                 android:src="@drawable/ic_action_favorite0"/>
 
             <ImageView

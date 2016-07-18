@@ -63,6 +63,18 @@
             android:label="绑定支付信息"
             android:parentActivityName=".ModifyActivity">
         </activity>
+        <activity android:name=".RecordActivity"
+            android:label="我的购买记录"
+            android:parentActivityName=".PersonActivity">
+        </activity>
+        <activity android:name=".FavoriteActivity"
+            android:label="我喜欢的商品"
+            android:parentActivityName=".PersonActivity">
+        </activity>
+        <activity android:name=".CommentActivity"
+            android:label="意见与反馈"
+            android:parentActivityName=".PersonActivity">
+        </activity>
     </application>
 
 </manifest>

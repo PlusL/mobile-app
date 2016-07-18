@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/activity_register_et_phone"
         android:hint="请输入您的手机号"
+        android:textColorHint="@color/hint_color"
         android:inputType="phone"
         android:layout_marginTop="10dp"/>
 
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/activity_register_et_code"
             android:hint="6位验证码"
+            android:textColorHint="@color/hint_color"
             android:inputType="number"
             android:layout_alignParentBottom="true"/>
 
@@ -45,8 +47,18 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/activity_register_et_nickname"
+        android:hint="请输入昵称"
+        android:textColorHint="@color/hint_color"
+        android:layout_marginTop="10dp"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/activity_register_et_password1"
         android:hint="请输入密码"
+        android:textColorHint="@color/hint_color"
         android:inputType="textPassword"
         android:layout_marginTop="10dp"/>
 
@@ -55,6 +67,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/activity_register_et_password2"
         android:hint="请确认密码"
+        android:textColorHint="@color/hint_color"
         android:inputType="textPassword"
         android:layout_marginTop="10dp"/>
 
