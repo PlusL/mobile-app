@@ -89,7 +89,7 @@ public class ModifyAdapter extends BaseAdapter {
                 Map<String, Object> map2 = mData.get(position);
                 holder2.tv.setText(map2.get("title").toString());
                 //TODO:保存修改的数据
-                //holder2.et.setText(map2.get("nickname").toString());
+                holder2.et.setText(map2.get("nickname").toString());
                 holder2.et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

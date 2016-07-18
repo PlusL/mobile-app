@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
+import com.avos.avoscloud.AVUser;
 import com.hs2069.hs2069.fragments.ModifyFragment;
 
 /**

@@ -3,6 +3,7 @@ package com.hs2069.hs2069.fragments;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.hs2069.hs2069.Adapter.ModifyAdapter;
 import com.hs2069.hs2069.Adapter.PersonInfoAdapter1;
 import com.hs2069.hs2069.AddressActivity;
@@ -38,7 +40,7 @@ public class ModifyFragment extends android.support.v4.app.Fragment  {
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("title", strs[i]);
             item.put("image", imgs[i]);
-            if(i == 1) item.put("nickname", "撒比狗");
+            if(i == 1) item.put("nickname", AVUser.getCurrentUser().getString("nickname"));
             dataList.add(item);
             //ModifyItem1 mModifyItem1 = new ModifyItem1(strs[i], imgs[i])
         }
